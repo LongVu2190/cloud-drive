@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Upload</title>
+  <link rel="stylesheet" href="./public/styles/spinner.css">
+  <script src="./public/scripts/loading.js"></script>
+  <script src="./public/tailwind/tailwind.js"></script>
+</head>
+
+<body>
+  <div id="loading" class="absolute z-50 flex items-center justify-center h-screen w-screen">
+    <div id="spinner">
+    </div>
+  </div>
+  <div id="page-content" class="z-10 flex items-center justify-center h-screen bg-gray-200 relative">
+    <form action="/api/upload" method="post" enctype="multipart/form-data" class="flex flex-col space-y-4">
+      <input type="file" name="myFile"
+             class="py-2 px-3 rounded shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300">
+      <input type="submit" value="Upload"
+             class="py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">
+      <a href="/disk"
+         class="text-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">Files</a>
+    </form>
+  </div>
+</body>
+
+</html>
