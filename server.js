@@ -23,10 +23,16 @@ app.use(credentials);
 app.use(cors(corsOptions));
 app.use(express.json());
 app.use(bodyParser.json());
-app.use(express.urlencoded({ extended: true })); //for POST and PUT requests (sending data in the form of some data object)
+app.use(express.urlencoded({ extended: true })); // for POST and PUT requests (sending data in the form of some data object)
 
 // Using public folder for static files
 const __dirname = dirname(fileURLToPath(import.meta.url));
+// Check and create 'disk' directory if it doesn't exist
+const diskDir = path.join(__dirname, "disk");
+if (!fs.existsSync(diskDir)){
+    fs.mkdirSync(diskDir);
+}
+
 app.use("/public/", express.static(path.join(__dirname, "public")));
 app.use("/disk/", express.static(path.join(__dirname, "disk")));
 
@@ -47,7 +53,7 @@ app.get("/disk", (req, res) => {
 });
 
 app.use("/", (req, res) => {
-  //logInformation("Accessing index page: ", req);
+  // logInformation("Accessing index page: ", req);
   res.render("index.ejs");
 });
 
