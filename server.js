@@ -60,3 +60,5 @@ app.use("/", (req, res) => {
 app.listen(config.server_port, async () => {
     console.log("Server is listening on PORT " + config.server_port);
 });
+
+export default app;
